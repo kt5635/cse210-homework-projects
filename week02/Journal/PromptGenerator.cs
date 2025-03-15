@@ -11,7 +11,7 @@ public class PromptGenerator
     public PromptGenerator()
     {
         _prompts.Add("What are three things you are grateful for today, and why?");
-        _prompts.Add("What is one area in your life where you'd like to improve? What steps can you take to get there?");
+        _prompts.Add("What is one area in your life where you would like to improve? What steps can you take to get there?");
         _prompts.Add("What is something you have been avoiding, and why do you think you have been avoiding it?");
         _prompts.Add("Describe a situation that made you feel proud of yourself. What did it teach you about your strengths?");
         _prompts.Add("If you could live anywhere in the world for a year, where would it be and why?");

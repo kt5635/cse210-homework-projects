@@ -26,19 +26,16 @@ class Program
             int choice = int.Parse(Console.ReadLine());
 
             if (choice == 1){
-
                 Entry newEntry = new Entry();
-                Console.WriteLine($"Prompt: {newEntry._promptText}");
+
+                Console.WriteLine($"Prompt: {newEntry._promptText}"); 
                 newEntry._entryText = Console.ReadLine();
-
                 journal.AddEntry(newEntry);
-
             }
 
             else if (choice == 2){
 
                 journal.DisplayAll();
-                
             }
 
             else if (choice == 3){

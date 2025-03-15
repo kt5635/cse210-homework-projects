@@ -8,17 +8,19 @@ public class Entry {
     public string _promptText;
     public string _entryText;
 
-    public Entry()
-    {
-        PromptGenerator promptGenerator = new PromptGenerator();
-        _promptText = promptGenerator.GetRandomPrompt();
-    }
     public Entry(DateTime date, string promptText, string entryText)
     {
         _date = date;
         _promptText = promptText;
         _entryText = entryText;
     }
+
+public Entry()
+{
+    PromptGenerator promptGenerator = new PromptGenerator();
+    _promptText = promptGenerator.GetRandomPrompt(); 
+    _date = DateTime.Today;
+}
 
     public void Display()
     {
