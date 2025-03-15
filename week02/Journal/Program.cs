@@ -1,4 +1,4 @@
-// Showing Creativity and Exceeding Requirements: Added code to save and laod journal information in a JSON file
+// Showing Creativity and Exceeding Requirements: Added code to save and load journal information in a JSON file
 
 using System;
 using System.Collections.Generic;
