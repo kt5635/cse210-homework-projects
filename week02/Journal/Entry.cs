@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Net.Mail;
+using System.Text.Json;
 
 public class Entry {
     public DateTime _date = DateTime.Today;

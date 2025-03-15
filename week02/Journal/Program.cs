@@ -1,6 +1,9 @@
+// Showing Creativity and Exceeding Requirements: Added code to save and laod journal information in a JSON file
+
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text.Json;
 
 class Program
 {
@@ -39,15 +42,20 @@ class Program
             }
 
             else if (choice == 3){
-                journal.LoadFromFile("journal.txt");
+                Console.Write("Enter filename to load journal entries: ");
+                string filename = Console.ReadLine();
+                journal.LoadFromFile(filename);
             }
 
             else if (choice == 4){
-                journal.SaveToFile("journal.txt");
+                Console.Write("Enter filename: ");
+                string filename = Console.ReadLine();
+                journal.SaveToFile(filename);
             }
 
             else if (choice == 5){
                 Console.Write("Have a great Day!");
+                break;
             }
 
         }
