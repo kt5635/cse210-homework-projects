@@ -17,12 +17,14 @@ public class Reference
         _book = book;
         _chapter = chapter;
         _verse = startVerse;
-        _endVerse = endVerse;
+        _endVerse = endVerse > 0 ? endVerse : startVerse;
     }
 
     public string GetDisplayText() 
     {
-        return $"{_book} {_chapter}:{_verse}";
+        return _endVerse > _verse
+        ? $"{_book} {_chapter}:{_verse}-{_endVerse}"
+        : $"{_book} {_chapter}:{_verse}";
     }
 
 }

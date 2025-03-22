@@ -7,9 +7,9 @@ public class Scripture
     private string _reference;
     public List<Word> _words = new List<Word>();
     private Random _random = new Random(); 
-    
+
     public Scripture(Reference reference, string text) {
-        _reference = reference.ToString();
+        _reference = reference.GetDisplayText();
         _words = text.Split(' ').Select(word => new Word(word)).ToList();
     }
 
