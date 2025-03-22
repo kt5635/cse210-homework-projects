@@ -1,4 +1,4 @@
-public class Word 
+public class Word
 {
     private string _text;
     private bool _isHidden;
@@ -16,7 +16,7 @@ public class Word
         _isHidden = false;
     }
     public bool IsHidden() {
-        return _isHidden
+        return _isHidden;
     }
     public string GetDisplayText() {
         return _isHidden ? new string('_', _text.Length) : _text;

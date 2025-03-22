@@ -5,9 +5,9 @@ using System.Linq;
 public class Scripture 
 {
     private string _reference;
-    private List<Word> _words = new List<Word>();
-    private Random _random = new Random();
-
+    public List<Word> _words = new List<Word>();
+    private Random _random = new Random(); 
+    
     public Scripture(Reference reference, string text) {
         _reference = reference.ToString();
         _words = text.Split(' ').Select(word => new Word(word)).ToList();

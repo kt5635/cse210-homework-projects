@@ -15,9 +15,9 @@ class Program
         while(true)
         {
             string input = Console.ReadLine();
-            if (input?.ToLower() == "exit") break;
+            if (input?.ToLower() == "quit") break;
 
-            scripture.HideRandomWords(2);
+            scripture.HideRandomWords(3);
             Console.WriteLine(scripture.GetDisplayText());
 
             if (scripture.IsCompletelyHidden())
