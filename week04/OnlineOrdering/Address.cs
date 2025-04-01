@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 public class Address 
 {
@@ -10,15 +11,20 @@ public class Address
 
     public Address(int number, string name, string city, string state, string country)
     {
-        number = _streetnumber;
-        name = _streetName;
-        city = _city;
-        state = _state;
-        country = _country;
+        _streetnumber = number;
+        _streetName = name;
+        _city = city;
+        _state = state;
+        _country = country;
     }
 
     public string GetAddress()
     {
         return $"{_streetnumber} {_streetName}, {_city}, {_state} {_country}";
+    }
+
+    public bool BasedInUSA()
+    {
+        return _country.ToLower() == "usa";
     }
 }
