@@ -18,9 +18,13 @@ class Program
         videos[0].AddComment(new Comment("Kate", "I love this book!"));
         videos[1].AddComment(new Comment("Charlie", "Loved the comparison to modern adaptations like Clueless!"));
         videos[1].AddComment(new Comment("Dana", "Emma’s matchmaking chaos is so entertaining."));
+        videos[1].AddComment(new Comment("Jared", "I don't understand what is going on."));
         videos[2].AddComment(new Comment("Eve", "The contrast between Elinor and Marianne is so well done."));
         videos[2].AddComment(new Comment("Frank", "Sense and Sensibility is a timeless masterpiece."));
+        videos[2].AddComment(new Comment("Abby", "It would be hard to live during those times!"));
         videos[3].AddComment(new Comment("Henry", "That love letter from Captain Wentworth is everything!"));
+        videos[3].AddComment(new Comment("Lilly", "This is kind of a sad story, two lovers torn apart by family expectations."));
+        videos[3].AddComment(new Comment("Brian", "I love a good happy ending!"));
 
         Console.WriteLine("Jane Austen Book Reviews:");
         foreach (var video in videos)
