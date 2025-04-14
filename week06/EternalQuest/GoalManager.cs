@@ -15,11 +15,11 @@ public class GoalManager
     }
     public void Start()
     {
-        Console.WriteLine($"You have {_score} points.");
-        Console.WriteLine();
-
         while (true)
         {
+            Console.WriteLine($"You have {_score} points.");
+            Console.WriteLine();
+
             Console.WriteLine("Menu Options:");
             Console.WriteLine("  1. Create New Goal");
             Console.WriteLine("  2. List Goals");
@@ -37,7 +37,7 @@ public class GoalManager
                     CreateGoal();
                     break;
                 case 2:
-                    DisplayPlayerInfo();
+                    ListGoalDetails();
                     break;
                 case 3:
                     SaveGoal();
@@ -55,33 +55,35 @@ public class GoalManager
         }
 
     }
-    public void DisplayPlayerInfo()
-    {
-        ListGoalNames();
-        ListGoalDetails();
-    }
-    public void ListGoalNames() 
-    {
-        foreach (var goal in _goals)
-        {
-            Console.WriteLine($"- {goal.GetStringRepresentation()}");
-        }
-    }
+
+    // public void ListGoalNames() 
+    // {
+    //     foreach (var goal in _goals)
+    //     {
+    //         Console.WriteLine($"- {goal.GetStringRepresentation()}");
+    //     }
+    // }
     public void ListGoalDetails()
     {
+        int count = 1;
         foreach (var goal in _goals)
         {
-            Console.WriteLine(goal.GetDetailsString());
+            Console.WriteLine($"{count}. {goal.GetDetailsString()}");
+            count++;
         }
     }
-    public void CreateGoal()
+    public void GoalType()
     {
         Console.WriteLine("The types of goals are: ");
         Console.WriteLine("  1. Simple Goal");
         Console.WriteLine("  2. Eternal Goal");
         Console.WriteLine("  3. Checklist Goal");
+    }
+    public void CreateGoal()
+    {
+        GoalType();
 
-        Console.WriteLine("Whck type of goal would you like to create? ");
+        Console.WriteLine("Which type of goal would you like to create? ");
         int goalChoice = int.Parse(Console.ReadLine());
 
         Console.WriteLine("What is the name of your goal? ");
@@ -110,21 +112,22 @@ public class GoalManager
     }
     public void RecordEvent()
     {
+        GoalType();
+
         Console.WriteLine("Which goal did you accomplish? ");
         for (int i = 0; i < _goals.Count; i++)
         {
-            Console.WriteLine($"{i + 1}. {_goals[i].GetStringRepresentation()}");
+            Console.WriteLine($"{i + 1}. {_goals[i].GetDetailsString()}");
         }
 
         int choice = int.Parse(Console.ReadLine());
         Goal selectGoal = _goals[choice -1];
         selectGoal.RecordEvent();
 
-        if (selectGoal.IsComplete())
-        {
-            Console.WriteLine($"Congratulations! you have earned {selectGoal.GetPoints()} points.");
-            _score =+ int.Parse(selectGoal.GetPoints());
-        }
+        int points = int.Parse(selectGoal.GetPoints());
+        _score += points;
+        Console.WriteLine($"Congratulations! you have earned {selectGoal.GetPoints()} points.");
+
     }
     public void SaveGoal()
     {
@@ -150,12 +153,38 @@ public class GoalManager
         {
             string line;
             while ((line= reader.ReadLine()) != null)
-            {
-                string [] parts = line.Split(",");
+            {   
+                string [] parts = line.Split("|");
                 string type = parts[0];
                 string name = parts[1];
                 string description = parts [2];
                 string points = parts [3];
+
+                switch (type)
+                {
+                    case "SimpleGoal":
+                        bool IsComplete = bool.Parse(parts[4]);
+                        int simplePoints = int.Parse(points);
+                        var simpleGoal = new SimpleGoal(name, description, simplePoints.ToString());
+                        simpleGoal.MarkComplete(IsComplete);
+                        _goals.Add(simpleGoal);
+                        break;
+                    case "EternalGoal":
+                        int eternalPoints = int.Parse(points);
+                        _goals.Add(new EternalGoal(name, description, eternalPoints.ToString()));
+                        break;
+                    case "ChecklistGoal":
+                        int checklistPoints = int.Parse(points);
+                        int target = int.Parse(parts[4]);
+                        int? bonus = string.IsNullOrWhiteSpace(parts[5]) ? (int?)null : int.Parse(parts[5]);
+                        int amountCompleted = int.Parse(parts[6]);
+                        _goals.Add(new ChecklistGoal(name, description, checklistPoints.ToString(), target, bonus ?? 0)
+                        {
+                            AmountCompleted = amountCompleted
+                        });
+                        break;
+                    
+                }
 
             }
         }

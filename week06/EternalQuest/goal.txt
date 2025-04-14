@@ -1,0 +1,3 @@
+SimpleGoal|Talk|give talk in church|100|True
+EternalGoal|Scriptures|read scriptures daily|50
+ChecklistGoal|Temple|go to the temple|100|3|500|1

@@ -17,13 +17,16 @@ public class SimpleGoal: Goal
     {
         return _isComplete;
     }
+    public void MarkComplete(bool IsComplete)
+    {
+        _isComplete = IsComplete;
+    }
     public override string GetStringRepresentation()
     {
         return $"SimpleGoal|{_shortName}|{_description}|{_points}|{_isComplete}";
     }
     public override string GetDetailsString()
     {
-        return $"{_shortName}: {_description} (Points: {_points}) - " +
-            (_isComplete ? "[X]" : "[ ]");
+        return (_isComplete ? "[X]" : "[ ]") + $" {_shortName} ({_description})";
     }
 }
