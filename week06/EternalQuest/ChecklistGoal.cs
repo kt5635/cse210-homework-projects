@@ -8,24 +8,31 @@ public class ChecklistGoal: Goal
 
     public ChecklistGoal(string name, string description, string points, int target, int bonus) : base(name, description, points)
     {
+        _amountCompleted = 0;
         _target = target;
         _bonus = bonus;
     }
 
-    public void RecordEvent()
+    public override void RecordEvent()
     {
+        _amountCompleted++;
+        Console.WriteLine($"You have completed {_shortName} {_amountCompleted} / {_target}");
+        if (_amountCompleted == _target)
+        {
+            Console.WriteLine($"Congratulations! you have completed the target of {_target} completions and earned a bonus of {_bonus} points!");
+        }
 
     }
-    public bool IsComplete()
+    public override bool IsComplete()
     {
-        
+        return _amountCompleted >= _target;
     }
-    public string GetDetailsString()
+    public override string GetStringRepresentation()
     {
-
+        return $"SimpleGoal|{_shortName}|{_description}|{_points}|{_target}|{_amountCompleted}";
     }
-    public string GetStringRepresentation()
+    public override string GetDetailsString()
     {
-        
+        return $"{_shortName}: {_description} (Points: {_points}) - Competed {_amountCompleted}/{_target} times -";
     }
 }

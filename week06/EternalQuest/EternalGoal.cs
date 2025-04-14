@@ -6,16 +6,20 @@ public class EternalGoal: Goal
     {
     }
 
-    public void RecordEvent()
+    public override void RecordEvent()
     {
-
+        Console.WriteLine($"Congratulations! you have earned {_points}!");
     }
-    public bool IsComplete()
+    public override bool IsComplete()
     {
-        
+        return false;
     }
-    public string GetStringRepresentation()
+    public override string GetStringRepresentation()
     {
-        
+        return $"Eternal Goal|{_shortName}|{_description}|{_points}";
+    }
+    public override string GetDetailsString()
+    {
+        return $"{_shortName}: {_description} (Points: {_points}) - Eternal";
     }
 }
