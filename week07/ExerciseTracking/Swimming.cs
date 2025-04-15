@@ -4,7 +4,7 @@ public class Swimming : Activity
 {
     private int _laps;
 
-    public Swimming(int laps, string type, int date, double length) :base(type, date, length)
+    public Swimming(int laps, string type, DateTime date, double length) :base(type, date, length)
     {
         _laps = laps;
     }
@@ -25,6 +25,6 @@ public class Swimming : Activity
     }
     public override string GetSummary()
     {
-        return $"{base.GetSummary()} - Laps: {_laps}, Speed: {CalculateSpeed()} km/h, Distance: {CalculateDistance()} km, Pace: {CalculatePace()} min/km";
+        return $"{base.GetSummary()}, laps {_laps}";
     }
 }

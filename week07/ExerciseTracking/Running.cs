@@ -4,7 +4,7 @@ public class Running : Activity
 {
     private double _distance;
 
-    public Running(int distance, string type, int date, double length) :base(type, date, length)
+    public Running(int distance, string type, DateTime date, double length) :base(type, date, length)
     {
         _distance = distance;
     }
@@ -23,6 +23,6 @@ public class Running : Activity
     }
     public override string GetSummary()
     {
-        return $"{base.GetSummary()} - Speed: {CalculateSpeed()} km/h, Distance: {CalculateDistance()} km, Pace: {CalculatePace()} min/km";
+        return base.GetSummary();
     }
 }

@@ -4,7 +4,7 @@ public class Cycling : Activity
 {
     private int _speed;
 
-    public Cycling(int speed, string type, int date, double length) :base(type, date, length)
+    public Cycling(int speed, string type, DateTime date, double length) :base(type, date, length)
     {
         _speed = speed;
     }
@@ -24,7 +24,7 @@ public class Cycling : Activity
     }
     public override string GetSummary()
     {
-        return $"{base.GetSummary()} - Speed: {CalculateSpeed()} km/h, Distance: {CalculateDistance()} km, Pace: {CalculatePace()} min/km";
+        return base.GetSummary();
     }
 
 }

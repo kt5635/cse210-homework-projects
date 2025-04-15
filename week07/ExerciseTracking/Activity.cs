@@ -3,10 +3,10 @@ using System;
 public abstract class Activity
 {
     private string _activityType;
-    private int _date;
+    private  DateTime _date;
     protected double _length;
 
-    public Activity(string type, int date, double length)
+    public Activity(string type, DateTime date, double length)
     {
         _activityType = type;
         _date = date;
@@ -19,7 +19,7 @@ public abstract class Activity
 
     public virtual string GetSummary()
     {
-        return $"{_activityType} on {_date}: {_length} minutes";
+        return $"{_date:dd MMM yyyy} {_activityType} ({_length} min): Distance {CalculateDistance()} km, Speed {CalculateSpeed()} kph, Pace {CalculatePace()} min per km";
     }
 }
 
