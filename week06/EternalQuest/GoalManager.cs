@@ -3,21 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 
-
 public class GoalManager
 {
     private List<Goal> _goals = new List<Goal>();
     private int _score;
+    private string _level;
 
     public GoalManager()
     {
         _score = 0;
+        _level = "Beginner";
     }
     public void Start()
     {
         while (true)
         {
             Console.WriteLine($"You have {_score} points.");
+            Console.WriteLine($"Current Level: {_level}");
             Console.WriteLine();
 
             Console.WriteLine("Menu Options:");
@@ -56,13 +58,6 @@ public class GoalManager
 
     }
 
-    // public void ListGoalNames() 
-    // {
-    //     foreach (var goal in _goals)
-    //     {
-    //         Console.WriteLine($"- {goal.GetStringRepresentation()}");
-    //     }
-    // }
     public void ListGoalDetails()
     {
         int count = 1;
@@ -126,8 +121,10 @@ public class GoalManager
 
         int points = int.Parse(selectGoal.GetPoints());
         _score += points;
+
         Console.WriteLine($"Congratulations! you have earned {selectGoal.GetPoints()} points.");
 
+        updateLevel();
     }
     public void SaveGoal()
     {
@@ -189,6 +186,26 @@ public class GoalManager
             }
         }
     }
+    private void updateLevel()
+    {
+        if (_score >= 3000)
+        {
+            _level = "Gold";
+        }
+        else if (_score >= 2000)
+        {
+            _level = "Silver";
+        }
+        else if (_score >= 1000)
+        {
+            _level = "Bronze";
+        }
+        else if (_score >= 3000)
+        {
+            _level = "Beginner";
+        }
 
+        Console.WriteLine($"You have leveled up, you are now level {_level}");
+    }
     
 }
